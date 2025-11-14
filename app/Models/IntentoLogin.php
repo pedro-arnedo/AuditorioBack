@@ -8,7 +8,7 @@ class IntentoLogin extends Model
 {
     protected $table = 'intentos_login';
     protected $primaryKey = 'id';
-    public $timestamps = true;
+    public $timestamps = false;
 
     protected $fillable = [
         'email',
@@ -16,6 +16,6 @@ class IntentoLogin extends Model
         'ip_address',
         'user_agent',
         'mensaje',
-        'created_at'
+        'fecha_intento'
     ];
 }

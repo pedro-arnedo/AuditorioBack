@@ -28,7 +28,8 @@ class AuthController extends Controller
             'exitoso' => $usuario && Hash::check($request->password, $usuario->password),
             'ip_address' => $request->ip(),
             'user_agent' => $request->userAgent(),
-            'mensaje' => $usuario ? 'Usuario encontrado' : 'Usuario no encontrado'
+            'mensaje' => $usuario ? 'Usuario encontrado' : 'Usuario no encontrado',
+            'fecha_intento' => now()
         ]);
 
         // Validar existencia
