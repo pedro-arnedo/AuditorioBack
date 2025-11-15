@@ -16,6 +16,8 @@ class IntentoLogin extends Model
         'ip_address',
         'user_agent',
         'mensaje',
-        'fecha_intento'
+        'created_at'
     ];
+
+    const CREATED_AT = 'created_at';
 }

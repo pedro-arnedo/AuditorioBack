@@ -16,14 +16,24 @@ class Usuario extends Model
         'password',
         'rol_id',
         'institucion_id',
+        'foto_perfil',
         'estado',
-        'ultimo_acceso',
-        'created_at',
-        'updated_at'
+        'motivo_suspension',
+        'debe_cambiar_password',
+        'fecha_ultimo_acceso',
+        'email_verified_at',
+        'remember_token'
     ];
 
     protected $hidden = [
-        'password'
+        'password',
+        'remember_token'
+    ];
+
+    protected $casts = [
+        'debe_cambiar_password' => 'boolean',
+        'fecha_ultimo_acceso' => 'datetime',
+        'email_verified_at' => 'datetime'
     ];
 
     public function rol()
