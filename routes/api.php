@@ -1,10 +1,11 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Api\RolController;
+use App\Http\Controllers\Api\UsuarioController;
+use App\Http\Middleware\TokenMiddleware;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\InstitucionController;
-use App\Http\Controllers\Api\RolController;
-use App\Http\Middleware\TokenMiddleware;
-use Illuminate\Support\Facades\Route;
 
 Route::prefix('v1')->group(function () {
 
@@ -24,6 +25,14 @@ Route::prefix('v1')->group(function () {
         // ROLES
         Route::get('/roles', [RolController::class, 'index']);
         Route::get('/roles/{id}', [RolController::class, 'show']);
+
+        // USUARIOS
+        Route::get('/usuarios', [UsuarioController::class, 'index']);
+        Route::post('/usuarios', [UsuarioController::class, 'store']);
+        Route::get('/usuarios/{id}', [UsuarioController::class, 'show']);
+        Route::put('/usuarios/{id}', [UsuarioController::class, 'update']);
+        Route::patch('/usuarios/{id}/estado', [UsuarioController::class, 'cambiarEstado']);
+        Route::post('/usuarios/{id}/restablecer-password', [UsuarioController::class, 'restablecerPassword']);
 
         // HU-001 - INSTITUCIONES
         Route::get('/instituciones/validar-codigo', [InstitucionController::class, 'validarCodigo']);
